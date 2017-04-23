@@ -1,20 +1,16 @@
-package com.custardgames.prestige;
+package com.custardgames.prestige.screens;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.custardgames.prestige.Prestige;
 
-public class GameScreen implements Screen
+public class MainMenuScreen implements Screen
 {
 	private final Prestige game;
 
-	private GameStage uiStage;
-
-	public GameScreen(Prestige game)
+	public MainMenuScreen(Prestige game)
 	{
 		this.game = game;
-
-		uiStage = new GameStage(game);
-		
-		game.sceneLoader.loadScene("MainScene", uiStage.getViewport());
 	}
 
 	@Override
@@ -27,15 +23,22 @@ public class GameScreen implements Screen
 	@Override
 	public void render(float delta)
 	{
-		uiStage.act();
-		uiStage.draw();
+		game.batch.begin();
+		game.font.draw(game.batch, "Welcome to Drop!!! ", 100, 150);
+		game.font.draw(game.batch, "Tap anywhere to begin!", 100, 100);
+		game.batch.end();
+
+		if (Gdx.input.isTouched())
+		{
+			game.changeScreen(new GameScreen(game));
+		}
 	}
 
 	@Override
 	public void resize(int width, int height)
 	{
-		uiStage.getViewport().update(width, height, true);
-		game.sceneLoader.rayHandler.useCustomViewport(uiStage.getViewport().getScreenX(), uiStage.getViewport().getScreenY(), uiStage.getViewport().getScreenWidth(), uiStage.getViewport().getScreenHeight());
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
@@ -62,7 +65,8 @@ public class GameScreen implements Screen
 	@Override
 	public void dispose()
 	{
-		uiStage.dispose();
+		// TODO Auto-generated method stub
+
 	}
 
 }
