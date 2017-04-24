@@ -1,8 +1,8 @@
 package com.custardgames.prestige.locations.types;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.custardgames.prestige.GameStage;
-import com.custardgames.prestige.Player;
+import com.custardgames.prestige.entities.Player;
+import com.custardgames.prestige.ui.GameStage;
 
 public abstract class PlayerTradingUIItem extends TradingUIItem
 {

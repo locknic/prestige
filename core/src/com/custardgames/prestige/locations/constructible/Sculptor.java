@@ -5,10 +5,10 @@ import com.custardgames.prestige.entities.Player;
 import com.custardgames.prestige.locations.types.PlayerTradingUIItem;
 import com.custardgames.prestige.ui.GameStage;
 
-public class Shop extends PlayerTradingUIItem
+public class Sculptor extends PlayerTradingUIItem
 {
 
-	public Shop(GameStage gameStage, Actor actor, Player player)
+	public Sculptor(GameStage gameStage, Actor actor, Player player)
 	{
 		super(gameStage, actor, player);
 	}
@@ -16,25 +16,25 @@ public class Shop extends PlayerTradingUIItem
 	@Override
 	public void turnPassed()
 	{
-		this.inventory.gold = 2;
+		this.inventory.prestige = 2;
 	}
 
 	@Override
 	public void setExpectedItems()
 	{
-		this.expectedItems.food = 5;
+		this.expectedItems.stone = 6;
 	}
-
+	
 	@Override
 	public String getDescription()
 	{
-		return "Allows you to sell " + this.expectedItems.food + " to get " + this.inventory.gold + "gold here.";
+		return "Craft " + this.expectedItems.stone + " stone to get 2 prestige here.";
 	}
 
 	@Override
 	public String getName()
 	{
-		return "Shop";
+		return "Sculpting Workshop";
 	}
 
 }

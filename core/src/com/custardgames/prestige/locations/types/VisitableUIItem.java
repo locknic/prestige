@@ -2,46 +2,46 @@ package com.custardgames.prestige.locations.types;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.custardgames.prestige.GameStage;
-import com.custardgames.prestige.Inventory;
-import com.custardgames.prestige.UIItem;
+import com.custardgames.prestige.entities.Inventory;
 import com.custardgames.prestige.turns.TurnItem;
+import com.custardgames.prestige.ui.GameStage;
+import com.custardgames.prestige.ui.ToolTip;
+import com.custardgames.prestige.ui.UIItem;
 
-public abstract class VisitableUIItem extends UIItem implements TurnItem
+public abstract class VisitableUIItem extends UIItem implements TurnItem, ToolTip
 {
 	protected final GameStage gameStage;
 
-	public Actor actor;
+	public final Actor actor;
 
-	public String description;
 	public boolean hasVisitor;
-
 	public Inventory inventory;
 
 	public VisitableUIItem(GameStage gameStage, Actor actor)
 	{
 		this.gameStage = gameStage;
-		this.name = actor.getName();
 		this.actor = actor;
-		this.actor.addListener(this);
+		if (actor != null)
+		{
+			this.actor.addListener(this);
+			gameStage.turnItems.add(this);
+		}
 		this.hasVisitor = false;
 		this.inventory = new Inventory();
-
-		gameStage.turnItems.add(this);
 	}
-
+	
 	@Override
 	public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor)
 	{
-		System.out.println("ENTERED " + name);
+		gameStage.requestTooltip(this);
 	}
 
 	@Override
 	public void exit(InputEvent event, float x, float y, int pointer, Actor toActor)
 	{
-		System.out.println("EXITED " + name);
+		gameStage.stopTooltipRequest();
 	}
-
+	
 	@Override
 	public void clicked(InputEvent e, float x, float y)
 	{
@@ -54,4 +54,5 @@ public abstract class VisitableUIItem extends UIItem implements TurnItem
 	}
 
 	public abstract boolean visitAction();
+	
 }

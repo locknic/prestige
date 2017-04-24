@@ -1,7 +1,7 @@
 package com.custardgames.prestige.locations.types;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.custardgames.prestige.GameStage;
+import com.custardgames.prestige.ui.GameStage;
 
 public abstract class GivingUIItem extends VisitableUIItem
 {

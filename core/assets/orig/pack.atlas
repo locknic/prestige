@@ -1,41 +1,147 @@
 
 pack.png
-size: 1024,1024
+size: 2048,1024
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 big
   rotate: false
-  xy: 2, 132
+  xy: 2, 172
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
+blank
+  rotate: false
+  xy: 132, 236
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+button
+  rotate: false
+  xy: 1350, 860
+  size: 32, 32
+  split: 9, 9, 9, 9
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+carpenter
+  rotate: false
+  xy: 1284, 828
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+coin
+  rotate: false
+  xy: 132, 152
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+empty-big
+  rotate: false
+  xy: 1284, 894
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+farm
+  rotate: false
+  xy: 1414, 958
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+food
+  rotate: false
+  xy: 198, 218
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
 house
   rotate: false
-  xy: 2, 2
+  xy: 2, 42
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 map
   rotate: false
-  xy: 2, 262
-  size: 896, 512
-  orig: 896, 512
+  xy: 2, 302
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+plantation
+  rotate: false
+  xy: 132, 170
+  size: 64, 64
+  orig: 64, 64
   offset: 0, 0
   index: -1
 player
   rotate: false
-  xy: 132, 228
+  xy: 1414, 924
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-small
+player-blue
   rotate: false
-  xy: 900, 710
+  xy: 2, 2
+  size: 32, 38
+  orig: 32, 38
+  offset: 0, 0
+  index: -1
+player-red
+  rotate: false
+  xy: 36, 2
+  size: 32, 38
+  orig: 32, 38
+  offset: 0, 0
+  index: -1
+quarry
+  rotate: false
+  xy: 198, 236
   size: 64, 64
   orig: 64, 64
+  offset: 0, 0
+  index: -1
+sculptor
+  rotate: false
+  xy: 1284, 762
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+small
+  rotate: false
+  xy: 1480, 958
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+star
+  rotate: false
+  xy: 264, 284
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+stone
+  rotate: false
+  xy: 1284, 744
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+wood
+  rotate: false
+  xy: 1546, 1006
+  size: 16, 16
+  orig: 16, 16
   offset: 0, 0
   index: -1

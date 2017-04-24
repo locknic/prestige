@@ -1,30 +1,56 @@
 package com.custardgames.prestige.screens;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.utils.viewport.ExtendViewport;
-import com.custardgames.prestige.GameStage;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.custardgames.prestige.Prestige;
+import com.custardgames.prestige.ai.AI;
+import com.custardgames.prestige.ai.VeryEasyAI;
+import com.custardgames.prestige.ui.GameStage;
 
 public class GameScreen implements Screen
 {
 	private final Prestige game;
 
 	private GameStage gameStage;
-	private Stage uiStage;
+	
+	public GameScreen(Prestige game, AI ai)
+	{
+		this.game = game;
 
+		InputMultiplexer imp = new InputMultiplexer();
+		
+		InputMultiplexer inputMultiplexer = new InputMultiplexer();
+		Gdx.input.setInputProcessor(inputMultiplexer);
+		
+		game.sceneLoader.loadScene("MainScene");
+
+		gameStage = new GameStage(game, ai);
+		gameStage.setViewport(new FitViewport(Prestige.WIDTH, Prestige.HEIGHT));
+		imp.addProcessor(gameStage);
+		
+		Gdx.input.setInputProcessor(imp);
+	}
+	
 	public GameScreen(Prestige game)
 	{
 		this.game = game;
 
-		gameStage = new GameStage(game);
-
-		game.sceneLoader.loadScene("MainScene", gameStage.getViewport());
+		InputMultiplexer imp = new InputMultiplexer();
 		
-		uiStage = new Stage();
-		uiStage.setViewport(new ExtendViewport(Prestige.WIDTH, Prestige.HEIGHT));
-	}
+		InputMultiplexer inputMultiplexer = new InputMultiplexer();
+		Gdx.input.setInputProcessor(inputMultiplexer);
+		
+		game.sceneLoader.loadScene("MainScene");
 
+		gameStage = new GameStage(game);
+		gameStage.setViewport(new FitViewport(Prestige.WIDTH, Prestige.HEIGHT));
+		imp.addProcessor(gameStage);
+		
+		Gdx.input.setInputProcessor(imp);
+	}
+	
 	@Override
 	public void show()
 	{
@@ -38,21 +64,16 @@ public class GameScreen implements Screen
 		gameStage.act();
 		gameStage.draw();
 		
-		uiStage.act();
-		uiStage.draw();
-		game.batch.setProjectionMatrix(uiStage.getCamera().combined);
-		game.batch.begin();
-		game.font.draw(game.batch, "Gold " + gameStage.player1.inventory.gold + "  Wood " + gameStage.player1.inventory.wood + "  Stone " + gameStage.player1.inventory.stone + "  Food " + gameStage.player1.inventory.food + "  Prestige " + gameStage.player1.inventory.prestige, -uiStage.getWidth() / 2 + 20, uiStage.getHeight() / 2 - 40);
-		game.batch.end();
+		if (gameStage.ai != null)
+		{
+			gameStage.ai.act();
+		}
 	}
 
 	@Override
 	public void resize(int width, int height)
 	{
 		gameStage.getViewport().update(width, height, true);
-		game.sceneLoader.rayHandler.useCustomViewport(gameStage.getViewport().getScreenX(), gameStage.getViewport().getScreenY(),
-				gameStage.getViewport().getScreenWidth(), gameStage.getViewport().getScreenHeight());
-		uiStage.getViewport().update(width, height);
 	}
 
 	@Override

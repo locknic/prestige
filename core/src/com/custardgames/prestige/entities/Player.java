@@ -1,7 +1,8 @@
-package com.custardgames.prestige;
+package com.custardgames.prestige.entities;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.custardgames.prestige.locations.types.VisitableUIItem;
+import com.custardgames.prestige.ui.GameStage;
 
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.*;
 
@@ -22,7 +23,7 @@ public class Player
 		inventory.gold = 1;
 		inventory.wood = 0;
 		inventory.stone = 0;
-		inventory.food = 3;
+		inventory.food = 8;
 		inventory.prestige = 0;
 
 		this.actor = actor;
@@ -30,16 +31,16 @@ public class Player
 
 	public void goHome()
 	{
+		if (target != null)
+		{
+			target.hasVisitor = false;
+			target = null;
+		}
+		
 		actor.addAction(sequence(moveTo(house.getX(), house.getY(), 0.5f), delay(0.1f), run(new Runnable()
 		{
 			public void run()
 			{
-				if (target != null)
-				{
-					target.hasVisitor = false;
-					target = null;
-				}
-
 				gameStage.startTurn();
 			}
 		})));
@@ -49,7 +50,7 @@ public class Player
 	{
 		target = destination;
 
-		actor.addAction(sequence(moveTo(destination.actor.getX(), destination.actor.getY(), 0.5f), delay(0.1f), run(new Runnable()
+		actor.addAction(sequence(moveTo(destination.actor.getX() + destination.actor.getWidth() / 2, destination.actor.getY() + 10, 0.5f), delay(0.1f), run(new Runnable()
 		{
 			public void run()
 			{

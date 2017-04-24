@@ -1,4 +1,4 @@
-package com.custardgames.prestige;
+package com.custardgames.prestige.entities;
 
 public class Inventory
 {

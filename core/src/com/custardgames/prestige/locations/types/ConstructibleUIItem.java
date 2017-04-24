@@ -1,7 +1,7 @@
 package com.custardgames.prestige.locations.types;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.custardgames.prestige.UIItem;
+import com.custardgames.prestige.ui.UIItem;
 
 public class ConstructibleUIItem extends UIItem
 {

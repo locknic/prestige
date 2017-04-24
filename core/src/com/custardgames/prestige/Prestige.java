@@ -11,8 +11,8 @@ import com.uwsoft.editor.renderer.SceneLoader;
 
 public class Prestige extends Game
 {
-	public static final int WIDTH = 896;
-	public static final int HEIGHT = 512;
+	public static final int WIDTH = 1280;
+	public static final int HEIGHT = 720;
 
 	public SpriteBatch batch;
 	public BitmapFont font;
@@ -22,11 +22,8 @@ public class Prestige extends Game
 	@Override
 	public void render()
 	{
-		// 18, 134, 254
 		Gdx.gl.glClearColor(18 / 255f, 134 / 255f, 254 / 255f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-		sceneLoader.getEngine().update(Gdx.graphics.getDeltaTime());
 
 		super.render();
 	}
@@ -37,7 +34,6 @@ public class Prestige extends Game
 		sceneLoader = new SceneLoader();
 		batch = new SpriteBatch();
 		font = new BitmapFont();
-		
 		this.setScreen(new MainMenuScreen(this));
 	}
 	
